@@ -8,24 +8,29 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    21/01/2021
+    16/04/2021
 '''
 
 # Standard libraries
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 
 # Option
-experiment = 'ssp126' # ssp126; ssp585
+experiment = 'ssp585' # ssp126; ssp585
 save_fig = True
+n_rand = 10 # number of models included in the random analysis
+n_iter = 1000 # number of iterations included in the random analysis
 
 # Time parameter
 nmy = 12
 
-# Function to compute relative change in SIA and SIV
+# Function to compute mean SIA/SIV at beginning and end of scenario and relative change in SIA and SIV
 def compute_change(var):
-    start = np.nanmean(var[0:5,:],axis=0)
+    start = np.nanmean(var[0:5,:],axis=0) # 5-year time period
     end = np.nanmean(var[-5::,:],axis=0)
+#    start = np.nanmean(var[0:10,:],axis=0) # 10-year time period
+#    end = np.nanmean(var[-10::,:],axis=0)
     change = 100. * (end - start) / start
     return start,end,change
 
@@ -286,6 +291,10 @@ area_mmm_start = np.zeros(nmy)
 volume_mmm_start = np.zeros(nmy)
 sd_area_mmm_start = np.zeros(nmy)
 sd_volume_mmm_start = np.zeros(nmy)
+area_select_random_start = np.zeros(nmy)
+volume_select_random_start = np.zeros(nmy)
+sd_area_select_random_start = np.zeros(nmy)
+sd_volume_select_random_start = np.zeros(nmy)
 for m in np.arange(nmy):
     if experiment == 'ssp585':
         array_area = [area_awicm_start[m],area_bcccsm2mr_start[m],area_camscsm_start[m],area_fgoalsf3l_start[m],area_fgoalsg3_start[m],area_canesm5_start[m],area_canesm5canoe_start[m],area_cnrmcm6_start[m],area_cnrmcm6hr_start[m],area_accessesm_start[m],area_accesscm_start[m],area_mpiesmlr_start[m],area_mpiesmhr_start[m],area_ecearth3_start[m],area_ecearth3veg_start[m],area_fioesm_start[m],area_inmcm48_start[m],area_inmcm50_start[m],area_ipslcm6alr_start[m],area_kiostesm_start[m],area_miroc6_start[m],area_miroces2l_start[m],area_hadgem3ll_start[m],area_hadgem3mm_start[m],area_ukesmll_start[m],area_mriesm_start[m],area_cesm2_start[m],area_cesm2waccm_start[m],area_noresm2lm_start[m],area_noresm2mm_start[m],area_gfdlcm4_start[m],area_gfdlesm4_start[m],area_nesm3_start[m]]
@@ -298,6 +307,19 @@ for m in np.arange(nmy):
     sd_area_mmm_start[m] = np.nanstd(array_area)
     sd_volume_mmm_start[m] = np.nanstd(array_volume)
 
+    # Make random analysis
+    area_random_mean = np.zeros(n_iter)
+    volume_random_mean = np.zeros(n_iter)
+    for i in np.arange(n_iter):
+        array_area_random = random.sample(array_area,n_rand)
+        array_volume_random = random.sample(array_volume,n_rand)
+        area_random_mean[i] = np.nanmean(array_area_random)
+        volume_random_mean[i] = np.nanmean(array_volume_random)
+    area_select_random_start[m] = np.nanmean(area_random_mean)
+    volume_select_random_start[m] = np.nanmean(volume_random_mean)
+    sd_area_select_random_start[m] = np.nanstd(area_random_mean)
+    sd_volume_select_random_start[m] = np.nanstd(volume_random_mean)
+
 # Compute multi-model mean - all models - End
 area_mmm_end = np.zeros(nmy)
 volume_mmm_end = np.zeros(nmy)
@@ -305,6 +327,12 @@ sd_area_mmm_end = np.zeros(nmy)
 sd_volume_mmm_end = np.zeros(nmy)
 area_mmm_change = np.zeros(nmy)
 volume_mmm_change = np.zeros(nmy)
+area_select_random_end = np.zeros(nmy)
+volume_select_random_end = np.zeros(nmy)
+sd_area_select_random_end = np.zeros(nmy)
+sd_volume_select_random_end = np.zeros(nmy)
+area_select_random_change = np.zeros(nmy)
+volume_select_random_change = np.zeros(nmy)
 for m in np.arange(nmy):
     if experiment == 'ssp585':
         array_area = [area_awicm_end[m],area_bcccsm2mr_end[m],area_camscsm_end[m],area_fgoalsf3l_end[m],area_fgoalsg3_end[m],area_canesm5_end[m],area_canesm5canoe_end[m],area_cnrmcm6_end[m],area_cnrmcm6hr_end[m],area_accessesm_end[m],area_accesscm_end[m],area_mpiesmlr_end[m],area_mpiesmhr_end[m],area_ecearth3_end[m],area_ecearth3veg_end[m],area_fioesm_end[m],area_inmcm48_end[m],area_inmcm50_end[m],area_ipslcm6alr_end[m],area_kiostesm_end[m],area_miroc6_end[m],area_miroces2l_end[m],area_hadgem3ll_end[m],area_hadgem3mm_end[m],area_ukesmll_end[m],area_mriesm_end[m],area_cesm2_end[m],area_cesm2waccm_end[m],area_noresm2lm_end[m],area_noresm2mm_end[m],area_gfdlcm4_end[m],area_gfdlesm4_end[m],area_nesm3_end[m]]
@@ -318,6 +346,21 @@ for m in np.arange(nmy):
     sd_volume_mmm_end[m] = np.nanstd(array_volume)
     area_mmm_change[m] = 100. * (area_mmm_end[m] - area_mmm_start[m]) / area_mmm_start[m]
     volume_mmm_change[m] = 100. * (volume_mmm_end[m] - volume_mmm_start[m]) / volume_mmm_start[m]
+    
+    # Make random analysis
+    area_random_mean = np.zeros(n_iter)
+    volume_random_mean = np.zeros(n_iter)
+    for i in np.arange(n_iter):
+        array_area_random = random.sample(array_area,n_rand)
+        array_volume_random = random.sample(array_volume,n_rand)
+        area_random_mean[i] = np.nanmean(array_area_random)
+        volume_random_mean[i] = np.nanmean(array_volume_random)
+    area_select_random_end[m] = np.nanmean(area_random_mean)
+    volume_select_random_end[m] = np.nanmean(volume_random_mean)
+    sd_area_select_random_end[m] = np.nanstd(area_random_mean)
+    sd_volume_select_random_end[m] = np.nanstd(volume_random_mean)
+    area_select_random_change[m] = 100. * (area_select_random_end[m] - area_select_random_start[m]) / area_select_random_start[m]
+    volume_select_random_change[m] = 100. * (volume_select_random_end[m] - volume_select_random_start[m]) / volume_select_random_start[m]
 
 # Compute multi-model mean - good mean SIA (15 best models) - Start
 area_select_sia_15_start = np.zeros(nmy)
@@ -766,7 +809,7 @@ for m in np.arange(nmy):
     volume_select_members_change[m] = 100. * (volume_select_members_end[m] - volume_select_members_start[m]) / volume_select_members_start[m]
 
 # Scatter plots
-fig,ax = plt.subplots(2,2,figsize=(16,13))
+fig,ax = plt.subplots(2,2,figsize=(16,15))
 fig.subplots_adjust(left=0.1,bottom=0.2,right=0.95,top=0.95,wspace=0.3,hspace=0.3)
 
 # Change in March sea-ice area (2096-2100 vs 2015-2019)
@@ -786,6 +829,8 @@ ax[0,0].plot(area_select_ohtsia2_start[month],area_select_ohtsia2_end[month],'X'
 ax[0,0].plot(area_select_ohtsiv1_start[month],area_select_ohtsiv1_end[month],'o',color='gray',markersize=14)
 ax[0,0].plot(area_select_ohtsiv2_start[month],area_select_ohtsiv2_end[month],'X',color='gray',markersize=14)
 ax[0,0].plot(area_select_members_start[month],area_select_members_end[month],'o',color='purple',markersize=14)
+ax[0,0].plot(area_select_random_start[month],area_select_random_end[month],'o',color='cyan',markersize=10)
+ax[0,0].errorbar(area_select_random_start[month],area_select_random_end[month],xerr=sd_area_select_random_start[month],yerr=sd_area_select_random_end[month],fmt='o',color='cyan',capsize=5)
 ax[0,0].axvline(x=area_obs_start[month],color='black',linestyle='--',linewidth=2)
 if experiment == 'ssp585':
     ax[0,0].annotate(str(int(np.round(area_mmm_change[month])))+'%',(area_mmm_start[month]+0.05,area_mmm_end[month]+0.2),color='black',fontsize=16)
@@ -819,6 +864,8 @@ else:
     ax[0,0].annotate(str(int(np.round(area_select_members_change[month])))+'%',(area_select_members_start[month]-0.3,area_select_members_end[month]-0.15),color='purple',fontsize=14)
 ax[0,0].set_xlabel('March sea-ice area 2015-2019 (10$^6$ km$^2$)',fontsize=18)
 ax[0,0].set_ylabel('March sea-ice area \n 2096-2100 (10$^6$ km$^2$)',fontsize=18)
+#ax[0,0].set_xlabel('March sea-ice area 2015-2024 (10$^6$ km$^2$)',fontsize=18)
+#ax[0,0].set_ylabel('March sea-ice area \n 2091-2100 (10$^6$ km$^2$)',fontsize=18)
 ax[0,0].tick_params(axis='both',labelsize=16)
 ax[0,0].grid(linestyle='--')
 ax[0,0].set_title('a',loc='left',fontsize=25,fontweight='bold')
@@ -840,6 +887,8 @@ ax[0,1].plot(area_select_ohtsia2_start[month],area_select_ohtsia2_end[month],'X'
 ax[0,1].plot(area_select_ohtsiv1_start[month],area_select_ohtsiv1_end[month],'o',color='gray',markersize=14)
 ax[0,1].plot(area_select_ohtsiv2_start[month],area_select_ohtsiv2_end[month],'X',color='gray',markersize=14)
 ax[0,1].plot(area_select_members_start[month],area_select_members_end[month],'o',color='purple',markersize=14)
+ax[0,1].plot(area_select_random_start[month],area_select_random_end[month],'o',color='cyan',markersize=10)
+ax[0,1].errorbar(area_select_random_start[month],area_select_random_end[month],xerr=sd_area_select_random_start[month],yerr=sd_area_select_random_end[month],fmt='o',color='cyan',capsize=5)
 ax[0,1].annotate(str(int(np.round(area_mmm_change[month])))+'%',(area_mmm_start[month]+0.05,area_mmm_end[month]+0.1),color='black',fontsize=16)
 if experiment == 'ssp585':
     ax[0,1].annotate(str(int(np.round(area_select_sia_15_change[month])))+'%',(area_select_sia_15_start[month]+0.1,area_select_sia_15_end[month]),color='blue',fontsize=14)
@@ -864,6 +913,8 @@ else:
 ax[0,1].axvline(x=area_obs_start[month],color='black',linestyle='--',linewidth=2)
 ax[0,1].set_xlabel('September sea-ice area 2015-2019 (10$^6$ km$^2$)',fontsize=18)
 ax[0,1].set_ylabel('September sea-ice area \n 2096-2100 (10$^6$ km$^2$)',fontsize=18)
+#ax[0,1].set_xlabel('September sea-ice area 2015-2024 (10$^6$ km$^2$)',fontsize=18)
+#ax[0,1].set_ylabel('September sea-ice area \n 2091-2100 (10$^6$ km$^2$)',fontsize=18)
 ax[0,1].tick_params(axis='both',labelsize=16)
 ax[0,1].grid(linestyle='--')
 ax[0,1].set_title('b',loc='left',fontsize=25,fontweight='bold')
@@ -885,6 +936,8 @@ ax[1,0].plot(volume_select_ohtsia2_start[month],volume_select_ohtsia2_end[month]
 ax[1,0].plot(volume_select_ohtsiv1_start[month],volume_select_ohtsiv1_end[month],'o',color='gray',markersize=14)
 ax[1,0].plot(volume_select_ohtsiv2_start[month],volume_select_ohtsiv2_end[month],'X',color='gray',markersize=14)
 ax[1,0].plot(volume_select_members_start[month],volume_select_members_end[month],'o',color='purple',markersize=14)
+ax[1,0].plot(volume_select_random_start[month],volume_select_random_end[month],'o',color='cyan',markersize=10)
+ax[1,0].errorbar(volume_select_random_start[month],volume_select_random_end[month],xerr=sd_volume_select_random_start[month],yerr=sd_volume_select_random_end[month],fmt='o',color='cyan',capsize=5)
 ax[1,0].annotate(str(int(np.round(volume_mmm_change[month])))+'%',(volume_mmm_start[month]+0.1,volume_mmm_end[month]-0.5),color='black',fontsize=16)
 if experiment == 'ssp585':
     ax[1,0].annotate(str(int(np.round(volume_select_sia_15_change[month])))+'%',(volume_select_sia_15_start[month]+0.2,volume_select_sia_15_end[month]),color='blue',fontsize=14)
@@ -917,6 +970,8 @@ else:
 ax[1,0].axvline(x=volume_piomas_start[month],color='black',linestyle='--',linewidth=2)
 ax[1,0].set_xlabel('March sea-ice volume 2015-2019 (10$^3$ km$^3$)',fontsize=18)
 ax[1,0].set_ylabel('March sea-ice volume \n 2096-2100 (10$^3$ km$^3$)',fontsize=18)
+#ax[1,0].set_xlabel('March sea-ice volume 2015-2024 (10$^3$ km$^3$)',fontsize=18)
+#ax[1,0].set_ylabel('March sea-ice volume \n 2091-2100 (10$^3$ km$^3$)',fontsize=18)
 ax[1,0].tick_params(axis='both',labelsize=16)
 ax[1,0].grid(linestyle='--')
 ax[1,0].set_title('c',loc='left',fontsize=25,fontweight='bold')
@@ -941,6 +996,8 @@ ax[1,1].plot(volume_select_ohtsia2_start[month],volume_select_ohtsia2_end[month]
 ax[1,1].plot(volume_select_ohtsiv1_start[month],volume_select_ohtsiv1_end[month],'o',color='gray',label='Atlantic OHT + sea-ice volume (3)',markersize=14)
 ax[1,1].plot(volume_select_ohtsiv2_start[month],volume_select_ohtsiv2_end[month],'X',color='gray',label='Atl/Pac OHT + sea-ice volume (6)',markersize=14)
 ax[1,1].plot(volume_select_members_start[month],volume_select_members_end[month],'o',color='purple',label='>= 5 members (10)',markersize=14)
+ax[1,1].plot(volume_select_random_start[month],volume_select_random_end[month],'o',color='cyan',label='Random selection (10)',markersize=10)
+ax[1,1].errorbar(volume_select_random_start[month],volume_select_random_end[month],xerr=sd_volume_select_random_start[month],yerr=sd_volume_select_random_end[month],fmt='o',color='cyan',capsize=5)
 ax[1,1].annotate(str(int(np.round(volume_mmm_change[month])))+'%',(volume_mmm_start[month]-1.,volume_mmm_end[month]+0.05),color='black',fontsize=16)
 if experiment == 'ssp585':
     ax[1,1].annotate(str(int(np.round(volume_select_siv_15_change[month])))+'%',(volume_select_siv_15_start[month]+0.2,volume_select_sia_15_end[month]+0.05),color='green',fontsize=14)
@@ -962,9 +1019,11 @@ else:
     ax[1,1].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]-0.5,volume_select_ohtsiv2_end[month]-0.4),color='gray',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]-0.5,volume_select_members_end[month]+0.15),color='purple',fontsize=14)
 ax[1,1].axvline(x=volume_piomas_start[month],color='black',label='Obs./Reanalysis',linestyle='--',linewidth=2)
-ax[1,1].legend(shadow=True,frameon=False,fontsize=14,bbox_to_anchor=(1.1,-0.2),ncol=4)
+ax[1,1].legend(shadow=True,frameon=False,fontsize=16,bbox_to_anchor=(1.05,-0.18),ncol=3)
 ax[1,1].set_xlabel('September sea-ice volume 2015-2019 (10$^3$ km$^3$)',fontsize=18)
 ax[1,1].set_ylabel('September sea-ice volume \n 2096-2100 (10$^3$ km$^3$)',fontsize=18)
+#ax[1,1].set_xlabel('September sea-ice volume 2015-2024 (10$^3$ km$^3$)',fontsize=18)
+#ax[1,1].set_ylabel('September sea-ice volume \n 2091-2100 (10$^3$ km$^3$)',fontsize=18)
 ax[1,1].tick_params(axis='both',labelsize=16)
 ax[1,1].grid(linestyle='--')
 ax[1,1].set_title('d',loc='left',fontsize=25,fontweight='bold')

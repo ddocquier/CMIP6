@@ -4,11 +4,11 @@
 '''
 GOAL
     Fig. 1: Plot Arctic sea-ice area (10^6 km^2) for all CMIP6 models based on SSP5-8.5
-    Fig. S1: Same as Fig. 1 for SSP1-2.6
+    Fig. S2: Same as Fig. 1 for SSP1-2.6
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    10/12/2020
+    15/04/2021
 '''
 
 # Standard libraries
@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 # Option
 experiment = 'ssp585' # ssp126; ssp585
-save_fig = False
+save_fig = True
 
 # Working directories
 dir_input = '/nobackup/rossby24/proj/rossby/joint_exp/oseaice/CMIP6/' + str(experiment) + '/SIA-SIV/'
@@ -184,46 +184,44 @@ for m in np.arange(nmy):
         area_mmm[:,y,m] = array_area
         volume_mmm[:,y,m] = array_volume
 
-# Print
-print(np.arange(nyears)+2015)
-print(np.nanmean(area_mmm[:,:,8],axis=0))
-
 # Labels
-name_xticks = ['2010','2020','2030','2040','2050','2060','2070','2080','2090','2100']
+name_xticks = ['2020','2030','2040','2050','2060','2070','2080','2090','2100']
     
 # Time series of total Arctic sea-ice area
-xrangea = np.arange(1, 92, 10)
-fig,ax = plt.subplots(2,1,figsize=(20,12))
-fig.subplots_adjust(left=0.08,bottom=0.09,right=0.78,top=0.95,wspace=None,hspace=0.3)
+xrangea = np.arange(5, 86, 10)
+fig,ax = plt.subplots(2,1,figsize=(18,15))
+fig.subplots_adjust(left=0.08,bottom=0.09,right=0.95,top=0.95,wspace=None,hspace=0.3)
 
 # March area
-ax[0].plot(np.arange(nyears) + 6,area_mmm[0,:,2],'-',color='gray',label='Individual models',linewidth=1)
+ax[0].plot(np.arange(nyears),area_mmm[0,:,2],'-',color='gray',label='Individual models',linewidth=1)
 for i in np.arange(nmodels_area):
-    ax[0].plot(np.arange(nyears) + 6,area_mmm[i,:,2],'-',color='gray',linewidth=1)
-ax[0].plot(np.arange(nyears) + 6,np.nanmean(area_mmm[:,:,2],axis=0),'-',color='blue',label='Multi-model mean',linewidth=4)
-ax[0].legend(shadow=True,frameon=False,fontsize=22,bbox_to_anchor=(1,1))
+    ax[0].plot(np.arange(nyears),area_mmm[i,:,2],'-',color='gray',linewidth=1)
+ax[0].plot(np.arange(nyears),np.nanmean(area_mmm[:,:,2],axis=0),'-',color='blue',label='Multi-model mean',linewidth=4)
+if experiment == 'ssp585':
+    ax[0].axhline(y=1,color='black',linestyle='--',linewidth=2)
+ax[0].legend(shadow=True,frameon=False,fontsize=22,loc='lower left')
 ax[0].set_ylabel('March sea-ice area (10$^6$ km$^2$)',fontsize=24)
 ax[0].set_xlabel('Year',fontsize=24)
 ax[0].set_xticks(xrangea)
 ax[0].set_xticklabels(name_xticks)
 ax[0].set_yticks(np.arange(0, 20.1, 4))
 ax[0].tick_params(axis='both',labelsize=20)
-ax[0].axis([-1, 93, 0, 20])
+ax[0].axis([-1, 86, 0, 20])
 ax[0].grid(linestyle='--')
 ax[0].set_title('a',loc='left',fontsize=25,fontweight='bold')
     
 # September area
 for i in np.arange(nmodels_area):
-    ax[1].plot(np.arange(nyears) + 6,area_mmm[i,:,8],'-',color='gray',linewidth=1)
-ax[1].plot(np.arange(nyears) + 6,np.nanmean(area_mmm[:,:,8],axis=0),'-',color='blue',linewidth=4)
-plt.axhline(y=1,color='black',linestyle='--',linewidth=2)
+    ax[1].plot(np.arange(nyears),area_mmm[i,:,8],'-',color='gray',linewidth=1)
+ax[1].plot(np.arange(nyears),np.nanmean(area_mmm[:,:,8],axis=0),'-',color='blue',linewidth=4)
+ax[1].axhline(y=1,color='black',linestyle='--',linewidth=2)
 ax[1].set_xlabel('Year',fontsize=24)
 ax[1].set_ylabel('September sea-ice area (10$^6$ km$^2$)',fontsize=24)
 ax[1].set_xticks(xrangea)
 ax[1].set_xticklabels(name_xticks)
 ax[1].set_yticks(np.arange(0, 10.1, 2))
 ax[1].tick_params(axis='both',labelsize=20)
-ax[1].axis([-1, 93, 0, 10])
+ax[1].axis([-1, 86, 0, 10])
 ax[1].grid(linestyle='--')
 ax[1].set_title('b',loc='left',fontsize=25,fontweight='bold')
     
@@ -231,4 +229,4 @@ if save_fig == True:
     if experiment == 'ssp585':
         fig.savefig(dir_output + 'fig1.png')
     else:
-        fig.savefig(dir_output + 'figS1.png')
+        fig.savefig(dir_output + 'figS2.png')
