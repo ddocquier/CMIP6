@@ -6,7 +6,7 @@ GOAL
     Fig. 2: Plot Arctic sea-ice area (10^6 km^2) for selected CMIP6 models based on SSP5-8.5
     Fig. S4: Same as Fig. 2 for SSP1-2.6
     Fig. S1: Plot Arctic sea-ice volume (10^3 km^3) for selected CMIP6 models based on SSP5-8.5
-    Fig. S3: Same as Fig. S3 for SSP1-2.6
+    Fig. S3: Same as Fig. S1 for SSP1-2.6
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
