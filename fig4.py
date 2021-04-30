@@ -8,7 +8,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    15/04/2021
+    30/04/2021
 '''
 
 # Standard libraries
@@ -309,7 +309,7 @@ sd_apoht_date = np.nanstd(array_apoht)
 print('APOHT:',array_apoht)
 
 # Good AOHT 26N+57N and SIA (among the best 15 SIA models and best 8 OHT models)
-array_ohtsia1 = [area_hadgem3mm_date,area_ecearth3veg_date,area_mpiesmlr_date,area_ecearth3_date,area_hadgem3ll_date]
+array_ohtsia1 = [area_hadgem3mm_date,area_ecearth3veg_date,area_mpiesmlr_date,area_ecearth3_date,area_hadgem3ll_date,area_cnrmcm6_date]
 #ohtsia1_date = np.nanmean(array_ohtsia1)
 sd_ohtsia1_date = np.nanstd(array_ohtsia1)
 print('AOHT/SIA:',array_ohtsia1)
@@ -327,7 +327,7 @@ sd_ohtsiv1_date = np.nanstd(array_ohtsiv1)
 print('AOHT/SIV:',array_ohtsiv1)
 
 # Good AOHT 70N + POHT 60N and SIV (among the best 15 SIV models and best 8 OHT models)
-array_ohtsiv2 = [area_mpiesmlr_date,area_mpiesmhr_date,area_hadgem3mm_date,area_ipslcm6alr_date,area_mriesm_date,area_canesm5_date]
+array_ohtsiv2 = [area_mpiesmlr_date,area_mpiesmhr_date,area_hadgem3mm_date,area_ipslcm6alr_date,area_mriesm_date]
 #ohtsiv2_date = np.nanmean(array_ohtsiv2)
 sd_ohtsiv2_date = np.nanstd(array_ohtsiv2)
 print('APOHT/SIV:',array_ohtsiv2)
@@ -364,7 +364,7 @@ if experiment == 'ssp585':
                'C8 \n 0','C9 \n 0','C10 \n 0','C11 \n 0','C12 \n 0','C13 \n 0']
 else:
     name_xticks = ['WS \n 12','C1 \n 6','C2 \n 4','C3 \n 6','C4 \n 4','C5 \n 4','C6 \n 6','C7 \n 2',
-               'C8 \n 1','C9 \n 1','C10 \n 1','C11 \n 1','C12 \n 1','C13 \n 3'] 
+               'C8 \n 1','C9 \n 2','C10 \n 1','C11 \n 1','C12 \n 1','C13 \n 3'] 
 
 # Plot date of first ice-free Arctic in September
 index = np.arange(14)
@@ -382,10 +382,10 @@ ax.plot(index[5],tsia_date,'P',color='blue',label='C5: Trend in sea-ice area (15
 ax.plot(index[6],tsiv_date,'P',color='green',label='C6: Trend in sea-ice volume (15)',markersize=14)
 ax.plot(index[7],aoht_date,'o',color='red',label='C7: Atlantic OHT (8)',markersize=14)
 ax.plot(index[8],apoht_date,'X',color='red',label='C8: Atlantic/Pacific OHT (8)',markersize=14)
-ax.plot(index[9],ohtsia1_date,'o',color='orange',label='C9: Atlantic OHT + sea-ice area (5)',markersize=14)
+ax.plot(index[9],ohtsia1_date,'o',color='orange',label='C9: Atlantic OHT + sea-ice area (6)',markersize=14)
 ax.plot(index[10],ohtsia2_date,'X',color='orange',label='C10: Atl/Pac OHT + sea-ice area (5)',markersize=14)
 ax.plot(index[11],ohtsiv1_date,'o',color='gray',label='C11: Atlantic OHT + sea-ice volume (3)',markersize=14)
-ax.plot(index[12],ohtsiv2_date,'X',color='gray',label='C12: Atl/Pac OHT + sea-ice volume (6)',markersize=14)
+ax.plot(index[12],ohtsiv2_date,'X',color='gray',label='C12: Atl/Pac OHT + sea-ice volume (5)',markersize=14)
 if experiment == 'ssp585':
     ax.plot(index[13],members_date,'o',color='purple',label='C13: >= 5 members (10)',markersize=14)
 elif experiment == 'ssp126':

@@ -8,7 +8,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    16/04/2021
+    30/04/2021
 '''
 
 # Standard libraries
@@ -656,8 +656,8 @@ volume_select_ohtsia1_start = np.zeros(nmy)
 sd_area_select_ohtsia1_start = np.zeros(nmy)
 sd_volume_select_ohtsia1_start = np.zeros(nmy)
 for m in np.arange(nmy):
-    array_area = [area_hadgem3mm_start[m],area_ecearth3veg_start[m],area_mpiesmlr_start[m],area_ecearth3_start[m],area_hadgem3ll_start[m]]
-    array_volume = [volume_hadgem3mm_start[m],volume_ecearth3veg_start[m],volume_mpiesmlr_start[m],volume_ecearth3_start[m],volume_hadgem3ll_start[m]]
+    array_area = [area_hadgem3mm_start[m],area_ecearth3veg_start[m],area_mpiesmlr_start[m],area_ecearth3_start[m],area_hadgem3ll_start[m],area_cnrmcm6_start[m]]
+    array_volume = [volume_hadgem3mm_start[m],volume_ecearth3veg_start[m],volume_mpiesmlr_start[m],volume_ecearth3_start[m],volume_hadgem3ll_start[m],volume_cnrmcm6_start[m]]
     area_select_ohtsia1_start[m] = np.nanmean(array_area)
     volume_select_ohtsia1_start[m] = np.nanmean(array_volume)
     sd_area_select_ohtsia1_start[m] = np.nanstd(array_area)
@@ -671,8 +671,8 @@ sd_volume_select_ohtsia1_end = np.zeros(nmy)
 area_select_ohtsia1_change = np.zeros(nmy)
 volume_select_ohtsia1_change = np.zeros(nmy)
 for m in np.arange(nmy):
-    array_area = [area_hadgem3mm_end[m],area_ecearth3veg_end[m],area_mpiesmlr_end[m],area_ecearth3_end[m],area_hadgem3ll_end[m]]
-    array_volume = [volume_hadgem3mm_end[m],volume_ecearth3veg_end[m],volume_mpiesmlr_end[m],volume_ecearth3_end[m],volume_hadgem3ll_end[m]]
+    array_area = [area_hadgem3mm_end[m],area_ecearth3veg_end[m],area_mpiesmlr_end[m],area_ecearth3_end[m],area_hadgem3ll_end[m],area_cnrmcm6_end[m]]
+    array_volume = [volume_hadgem3mm_end[m],volume_ecearth3veg_end[m],volume_mpiesmlr_end[m],volume_ecearth3_end[m],volume_hadgem3ll_end[m],volume_cnrmcm6_end[m]]
     area_select_ohtsia1_end[m] = np.nanmean(array_area)
     volume_select_ohtsia1_end[m] = np.nanmean(array_volume)
     sd_area_select_ohtsia1_end[m] = np.nanstd(array_area)
@@ -746,8 +746,8 @@ volume_select_ohtsiv2_start = np.zeros(nmy)
 sd_area_select_ohtsiv2_start = np.zeros(nmy)
 sd_volume_select_ohtsiv2_start = np.zeros(nmy)
 for m in np.arange(nmy):
-    array_area = [area_mpiesmlr_start[m],area_mpiesmhr_start[m],area_hadgem3mm_start[m],area_ipslcm6alr_start[m],area_mriesm_start[m],area_canesm5_start[m]]
-    array_volume = [volume_mpiesmlr_start[m],volume_mpiesmhr_start[m],volume_hadgem3mm_start[m],volume_ipslcm6alr_start[m],volume_mriesm_start[m],volume_canesm5_start[m]]
+    array_area = [area_mpiesmlr_start[m],area_mpiesmhr_start[m],area_hadgem3mm_start[m],area_ipslcm6alr_start[m],area_mriesm_start[m]]
+    array_volume = [volume_mpiesmlr_start[m],volume_mpiesmhr_start[m],volume_hadgem3mm_start[m],volume_ipslcm6alr_start[m],volume_mriesm_start[m]]
     area_select_ohtsiv2_start[m] = np.nanmean(array_area)
     volume_select_ohtsiv2_start[m] = np.nanmean(array_volume)
     sd_area_select_ohtsiv2_start[m] = np.nanstd(array_area)
@@ -761,8 +761,8 @@ sd_volume_select_ohtsiv2_end = np.zeros(nmy)
 area_select_ohtsiv2_change = np.zeros(nmy)
 volume_select_ohtsiv2_change = np.zeros(nmy)
 for m in np.arange(nmy):
-    array_area = [area_mpiesmlr_end[m],area_mpiesmhr_end[m],area_hadgem3mm_end[m],area_ipslcm6alr_end[m],area_mriesm_end[m],area_canesm5_end[m]]
-    array_volume = [volume_mpiesmlr_end[m],volume_mpiesmhr_end[m],volume_hadgem3mm_end[m],volume_ipslcm6alr_end[m],volume_mriesm_end[m],volume_canesm5_end[m]]
+    array_area = [area_mpiesmlr_end[m],area_mpiesmhr_end[m],area_hadgem3mm_end[m],area_ipslcm6alr_end[m],area_mriesm_end[m]]
+    array_volume = [volume_mpiesmlr_end[m],volume_mpiesmhr_end[m],volume_hadgem3mm_end[m],volume_ipslcm6alr_end[m],volume_mriesm_end[m]]
     area_select_ohtsiv2_end[m] = np.nanmean(array_area)
     volume_select_ohtsiv2_end[m] = np.nanmean(array_volume)
     sd_area_select_ohtsiv2_end[m] = np.nanstd(array_area)
@@ -841,11 +841,11 @@ if experiment == 'ssp585':
     ax[0,0].annotate(str(int(np.round(area_select_tsia_15_change[month])))+'%',(area_select_tsia_15_start[month]-0.3,area_select_tsia_15_end[month]+0.1),color='blue',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_tsiv_15_change[month])))+'%',(area_select_tsiv_15_start[month]-0.3,area_select_tsiv_15_end[month]+0.1),color='green',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_aoht_8_change[month])))+'%',(area_select_aoht_8_start[month]+0.08,area_select_aoht_8_end[month]-0.2),color='red',fontsize=14)
-    ax[0,0].annotate(str(int(np.round(area_select_apoht_8_change[month])))+'%',(area_select_apoht_8_start[month]+0.08,area_select_apoht_8_end[month]),color='red',fontsize=14)
+    ax[0,0].annotate(str(int(np.round(area_select_apoht_8_change[month])))+'%',(area_select_apoht_8_start[month]+0.05,area_select_apoht_8_end[month]+0.1),color='red',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_ohtsia1_change[month])))+'%',(area_select_ohtsia1_start[month]-0.1,area_select_ohtsia1_end[month]+0.25),color='orange',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_ohtsia2_change[month])))+'%',(area_select_ohtsia2_start[month]+0.05,area_select_ohtsia2_end[month]+0.2),color='orange',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_ohtsiv1_change[month])))+'%',(area_select_ohtsiv1_start[month]+0.05,area_select_ohtsiv1_end[month]+0.2),color='gray',fontsize=14)
-    ax[0,0].annotate(str(int(np.round(area_select_ohtsiv2_change[month])))+'%',(area_select_ohtsiv2_start[month]-0.3,area_select_ohtsiv2_end[month]+0.1),color='gray',fontsize=14)
+    ax[0,0].annotate(str(int(np.round(area_select_ohtsiv2_change[month])))+'%',(area_select_ohtsiv2_start[month]-0.2,area_select_ohtsiv2_end[month]-0.5),color='gray',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_members_change[month])))+'%',(area_select_members_start[month]-0.3,area_select_members_end[month]-0.5),color='purple',fontsize=14)
 else:
     ax[0,0].annotate(str(int(np.round(area_mmm_change[month])))+'%',(area_mmm_start[month]+0.05,area_mmm_end[month]-0.2),color='black',fontsize=16)
@@ -855,9 +855,9 @@ else:
     ax[0,0].annotate(str(int(np.round(area_select_varsiv_15_change[month])))+'%',(area_select_varsiv_15_start[month]+0.05,area_select_varsiv_15_end[month]+0.1),color='green',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_tsia_15_change[month])))+'%',(area_select_tsia_15_start[month]-0.2,area_select_tsia_15_end[month]+0.1),color='blue',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_tsiv_15_change[month])))+'%',(area_select_tsiv_15_start[month]-0.1,area_select_tsiv_15_end[month]+0.1),color='green',fontsize=14)
-    ax[0,0].annotate(str(int(np.round(area_select_aoht_8_change[month])))+'%',(area_select_aoht_8_start[month]+0.07,area_select_aoht_8_end[month]),color='red',fontsize=14)
+    ax[0,0].annotate(str(int(np.round(area_select_aoht_8_change[month])))+'%',(area_select_aoht_8_start[month]-0.3,area_select_aoht_8_end[month]+0.05),color='red',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_apoht_8_change[month])))+'%',(area_select_apoht_8_start[month]+0.08,area_select_apoht_8_end[month]-0.05),color='red',fontsize=14)
-    ax[0,0].annotate(str(int(np.round(area_select_ohtsia1_change[month])))+'%',(area_select_ohtsia1_start[month]-0.15,area_select_ohtsia1_end[month]+0.15),color='orange',fontsize=13)
+    ax[0,0].annotate(str(int(np.round(area_select_ohtsia1_change[month])))+'%',(area_select_ohtsia1_start[month]+0.08,area_select_ohtsia1_end[month]),color='orange',fontsize=13)
     ax[0,0].annotate(str(int(np.round(area_select_ohtsia2_change[month])))+'%',(area_select_ohtsia2_start[month]+0.07,area_select_ohtsia2_end[month]-0.1),color='orange',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_ohtsiv1_change[month])))+'%',(area_select_ohtsiv1_start[month],area_select_ohtsiv1_end[month]+0.1),color='gray',fontsize=14)
     ax[0,0].annotate(str(int(np.round(area_select_ohtsiv2_change[month])))+'%',(area_select_ohtsiv2_start[month]-0.07,area_select_ohtsiv2_end[month]+0.15),color='gray',fontsize=14)
@@ -903,9 +903,9 @@ else:
     ax[0,1].annotate(str(int(np.round(area_select_varsiv_15_change[month])))+'%',(area_select_varsiv_15_start[month]+0.05,area_select_varsiv_15_end[month]+0.1),color='green',fontsize=14)
     ax[0,1].annotate(str(int(np.round(area_select_tsia_15_change[month])))+'%',(area_select_tsia_15_start[month]+0.1,area_select_tsia_15_end[month]),color='blue',fontsize=14)
     ax[0,1].annotate(str(int(np.round(area_select_tsiv_15_change[month])))+'%',(area_select_tsiv_15_start[month]-0.1,area_select_tsiv_15_end[month]+0.1),color='green',fontsize=14)
-    ax[0,1].annotate(str(int(np.round(area_select_aoht_8_change[month])))+'%',(area_select_aoht_8_start[month]+0.1,area_select_aoht_8_end[month]),color='red',fontsize=14)
+    ax[0,1].annotate(str(int(np.round(area_select_aoht_8_change[month])))+'%',(area_select_aoht_8_start[month],area_select_aoht_8_end[month]-0.3),color='red',fontsize=14)
     ax[0,1].annotate(str(int(np.round(area_select_apoht_8_change[month])))+'%',(area_select_apoht_8_start[month]-0.15,area_select_apoht_8_end[month]+0.15),color='red',fontsize=14)
-    ax[0,1].annotate(str(int(np.round(area_select_ohtsia1_change[month])))+'%',(area_select_ohtsia1_start[month],area_select_ohtsia1_end[month]-0.3),color='orange',fontsize=13)
+    ax[0,1].annotate(str(int(np.round(area_select_ohtsia1_change[month])))+'%',(area_select_ohtsia1_start[month]+0.1,area_select_ohtsia1_end[month]),color='orange',fontsize=13)
     ax[0,1].annotate(str(int(np.round(area_select_ohtsia2_change[month])))+'%',(area_select_ohtsia2_start[month]-0.15,area_select_ohtsia2_end[month]-0.3),color='orange',fontsize=14)
     ax[0,1].annotate(str(int(np.round(area_select_ohtsiv1_change[month])))+'%',(area_select_ohtsiv1_start[month]-0.4,area_select_ohtsiv1_end[month]-0.1),color='gray',fontsize=14)
     ax[0,1].annotate(str(int(np.round(area_select_ohtsiv2_change[month])))+'%',(area_select_ohtsiv2_start[month]-0.2,area_select_ohtsiv2_end[month]-0.3),color='gray',fontsize=14)
@@ -947,11 +947,11 @@ if experiment == 'ssp585':
     ax[1,0].annotate(str(int(np.round(volume_select_tsia_15_change[month])))+'%',(volume_select_tsia_15_start[month]-0.8,volume_select_tsia_15_end[month]+0.15),color='blue',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_tsiv_15_change[month])))+'%',(volume_select_tsiv_15_start[month]-0.8,volume_select_tsiv_15_end[month]+0.2),color='green',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_aoht_8_change[month])))+'%',(volume_select_aoht_8_start[month]+0.15,volume_select_aoht_8_end[month]-0.3),color='red',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_apoht_8_change[month])))+'%',(volume_select_apoht_8_start[month]+0.15,volume_select_apoht_8_end[month]+0.1),color='red',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]+0.05,volume_select_ohtsia1_end[month]+0.15),color='orange',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_apoht_8_change[month])))+'%',(volume_select_apoht_8_start[month]-0.15,volume_select_apoht_8_end[month]+0.25),color='red',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]+0.15,volume_select_ohtsia1_end[month]+0.15),color='orange',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_ohtsia2_change[month])))+'%',(volume_select_ohtsia2_start[month]-1.,volume_select_ohtsia2_end[month]),color='orange',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv1_change[month])))+'%',(volume_select_ohtsiv1_start[month]+0.2,volume_select_ohtsiv1_end[month]),color='gray',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]-0.8,volume_select_ohtsiv2_end[month]-0.5),color='gray',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv1_change[month])))+'%',(volume_select_ohtsiv1_start[month]+0.2,volume_select_ohtsiv1_end[month]-0.3),color='gray',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]+0.2,volume_select_ohtsiv2_end[month]-0.2),color='gray',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]+0.1,volume_select_members_end[month]-0.5),color='purple',fontsize=14)
 else:
     ax[1,0].annotate(str(int(np.round(volume_select_sia_15_change[month])))+'%',(volume_select_sia_15_start[month]+0.2,volume_select_sia_15_end[month]-0.3),color='blue',fontsize=14)
@@ -962,9 +962,9 @@ else:
     ax[1,0].annotate(str(int(np.round(volume_select_tsiv_15_change[month])))+'%',(volume_select_tsiv_15_start[month]-0.8,volume_select_tsiv_15_end[month]+0.2),color='green',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_aoht_8_change[month])))+'%',(volume_select_aoht_8_start[month]+0.15,volume_select_aoht_8_end[month]-0.3),color='red',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_apoht_8_change[month])))+'%',(volume_select_apoht_8_start[month]+0.15,volume_select_apoht_8_end[month]+0.1),color='red',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]+0.05,volume_select_ohtsia1_end[month]+0.15),color='orange',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]-0.1,volume_select_ohtsia1_end[month]-0.5),color='orange',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_ohtsia2_change[month])))+'%',(volume_select_ohtsia2_start[month]-1.,volume_select_ohtsia2_end[month]),color='orange',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv1_change[month])))+'%',(volume_select_ohtsiv1_start[month]+0.2,volume_select_ohtsiv1_end[month]-0.3),color='gray',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv1_change[month])))+'%',(volume_select_ohtsiv1_start[month]-0.5,volume_select_ohtsiv1_end[month]+0.2),color='gray',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]-0.3,volume_select_ohtsiv2_end[month]-0.5),color='gray',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]+0.1,volume_select_members_end[month]-0.5),color='purple',fontsize=14)
 ax[1,0].axvline(x=volume_piomas_start[month],color='black',linestyle='--',linewidth=2)
@@ -991,10 +991,10 @@ ax[1,1].plot(volume_select_tsia_15_start[month],volume_select_tsia_15_end[month]
 ax[1,1].plot(volume_select_tsiv_15_start[month],volume_select_tsiv_15_end[month],'P',color='green',label='Trend in sea-ice volume (15)',markersize=14)
 ax[1,1].plot(volume_select_aoht_8_start[month],volume_select_aoht_8_end[month],'o',color='red',label='Atlantic OHT (8)',markersize=14)
 ax[1,1].plot(volume_select_apoht_8_start[month],volume_select_apoht_8_end[month],'X',color='red',label='Atlantic/Pacific OHT (8)',markersize=14)
-ax[1,1].plot(volume_select_ohtsia1_start[month],volume_select_ohtsia1_end[month],'o',color='orange',label='Atlantic OHT + sea-ice area (5)',markersize=14)
+ax[1,1].plot(volume_select_ohtsia1_start[month],volume_select_ohtsia1_end[month],'o',color='orange',label='Atlantic OHT + sea-ice area (6)',markersize=14)
 ax[1,1].plot(volume_select_ohtsia2_start[month],volume_select_ohtsia2_end[month],'X',color='orange',label='Atl/Pac OHT + sea-ice area (5)',markersize=14)
 ax[1,1].plot(volume_select_ohtsiv1_start[month],volume_select_ohtsiv1_end[month],'o',color='gray',label='Atlantic OHT + sea-ice volume (3)',markersize=14)
-ax[1,1].plot(volume_select_ohtsiv2_start[month],volume_select_ohtsiv2_end[month],'X',color='gray',label='Atl/Pac OHT + sea-ice volume (6)',markersize=14)
+ax[1,1].plot(volume_select_ohtsiv2_start[month],volume_select_ohtsiv2_end[month],'X',color='gray',label='Atl/Pac OHT + sea-ice volume (5)',markersize=14)
 ax[1,1].plot(volume_select_members_start[month],volume_select_members_end[month],'o',color='purple',label='>= 5 members (10)',markersize=14)
 ax[1,1].plot(volume_select_random_start[month],volume_select_random_end[month],'o',color='cyan',label='Random selection (10)',markersize=10)
 ax[1,1].errorbar(volume_select_random_start[month],volume_select_random_end[month],xerr=sd_volume_select_random_start[month],yerr=sd_volume_select_random_end[month],fmt='o',color='cyan',capsize=5)
@@ -1006,18 +1006,18 @@ if experiment == 'ssp585':
     ax[1,1].annotate(str(int(np.round(volume_select_tsiv_15_change[month])))+'%',(volume_select_tsiv_15_start[month],volume_select_tsiv_15_end[month]+0.03),color='green',fontsize=14)
 else:
     ax[1,1].annotate(str(int(np.round(volume_select_sia_15_change[month])))+'%',(volume_select_sia_15_start[month]+0.2,volume_select_sia_15_end[month]),color='blue',fontsize=14)
-    ax[1,1].annotate(str(int(np.round(volume_select_siv_15_change[month])))+'%',(volume_select_siv_15_start[month]-0.8,volume_select_siv_15_end[month]+0.5),color='green',fontsize=14)
+    ax[1,1].annotate(str(int(np.round(volume_select_siv_15_change[month])))+'%',(volume_select_siv_15_start[month]-0.5,volume_select_siv_15_end[month]+0.3),color='green',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_varsia_15_change[month])))+'%',(volume_select_varsia_15_start[month]+0.05,volume_select_varsia_15_end[month]+0.2),color='blue',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_varsiv_15_change[month])))+'%',(volume_select_varsiv_15_start[month]+0.15,volume_select_varsiv_15_end[month]+0.1),color='green',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_tsia_15_change[month])))+'%',(volume_select_tsia_15_start[month]-0.8,volume_select_tsia_15_end[month]+0.15),color='blue',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_tsiv_15_change[month])))+'%',(volume_select_tsiv_15_start[month]-0.8,volume_select_tsiv_15_end[month]+0.2),color='green',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_aoht_8_change[month])))+'%',(volume_select_aoht_8_start[month],volume_select_aoht_8_end[month]-0.3),color='red',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_apoht_8_change[month])))+'%',(volume_select_apoht_8_start[month]+0.15,volume_select_apoht_8_end[month]+0.1),color='red',fontsize=14)
-    ax[1,1].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]+0.05,volume_select_ohtsia1_end[month]+0.15),color='orange',fontsize=14)
+    ax[1,1].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]-0.4,volume_select_ohtsia1_end[month]+0.15),color='orange',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_ohtsia2_change[month])))+'%',(volume_select_ohtsia2_start[month],volume_select_ohtsia2_end[month]-0.4),color='orange',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_ohtsiv1_change[month])))+'%',(volume_select_ohtsiv1_start[month]+0.2,volume_select_ohtsiv1_end[month]-0.3),color='gray',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]-0.5,volume_select_ohtsiv2_end[month]-0.4),color='gray',fontsize=14)
-    ax[1,1].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]-0.5,volume_select_members_end[month]+0.15),color='purple',fontsize=14)
+    ax[1,1].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]+0.15,volume_select_members_end[month]+0.15),color='purple',fontsize=14)
 ax[1,1].axvline(x=volume_piomas_start[month],color='black',label='Obs./Reanalysis',linestyle='--',linewidth=2)
 ax[1,1].legend(shadow=True,frameon=False,fontsize=16,bbox_to_anchor=(1.05,-0.18),ncol=3)
 ax[1,1].set_xlabel('September sea-ice volume 2015-2019 (10$^3$ km$^3$)',fontsize=18)

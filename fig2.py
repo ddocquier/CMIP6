@@ -10,7 +10,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    15/04/2021
+    30/04/2021
 '''
 
 # Standard libraries
@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 # Option
 experiment = 'ssp585' # ssp126; ssp585
 save_fig = True
-save_var = False
+save_var = True
 
 # Working directories
 dir_input = '/nobackup/rossby24/proj/rossby/joint_exp/oseaice/CMIP6/' + str(experiment) + '/SIA-SIV/'
@@ -295,8 +295,8 @@ area_select_ohtsia1 = np.zeros((nyears,nmy))
 volume_select_ohtsia1 = np.zeros((nyears,nmy))
 for m in np.arange(nmy):
     for y in np.arange(nyears):
-        array_area = [area_hadgem3mm[y,m],area_ecearth3veg[y,m],area_mpiesmlr[y,m],area_ecearth3[y,m],area_hadgem3ll[y,m]]
-        array_volume = [volume_hadgem3mm[y,m],volume_ecearth3veg[y,m],volume_mpiesmlr[y,m],volume_ecearth3[y,m],volume_hadgem3ll[y,m]]
+        array_area = [area_hadgem3mm[y,m],area_ecearth3veg[y,m],area_mpiesmlr[y,m],area_ecearth3[y,m],area_hadgem3ll[y,m],area_cnrmcm6[y,m]]
+        array_volume = [volume_hadgem3mm[y,m],volume_ecearth3veg[y,m],volume_mpiesmlr[y,m],volume_ecearth3[y,m],volume_hadgem3ll[y,m],volume_cnrmcm6[y,m]]
         area_select_ohtsia1[y,m] = np.nanmean(array_area)
         volume_select_ohtsia1[y,m] = np.nanmean(array_volume)
 
@@ -325,8 +325,8 @@ area_select_ohtsiv2 = np.zeros((nyears,nmy))
 volume_select_ohtsiv2 = np.zeros((nyears,nmy))
 for m in np.arange(nmy):
     for y in np.arange(nyears):
-        array_area = [area_mpiesmlr[y,m],area_mpiesmhr[y,m],area_hadgem3mm[y,m],area_ipslcm6alr[y,m],area_mriesm[y,m],area_canesm5[y,m]]
-        array_volume = [volume_mpiesmlr[y,m],volume_mpiesmhr[y,m],volume_hadgem3mm[y,m],volume_ipslcm6alr[y,m],volume_mriesm[y,m],volume_canesm5[y,m]]
+        array_area = [area_mpiesmlr[y,m],area_mpiesmhr[y,m],area_hadgem3mm[y,m],area_ipslcm6alr[y,m],area_mriesm[y,m]]
+        array_volume = [volume_mpiesmlr[y,m],volume_mpiesmhr[y,m],volume_hadgem3mm[y,m],volume_ipslcm6alr[y,m],volume_mriesm[y,m]]
         area_select_ohtsiv2[y,m] = np.nanmean(array_area)
         volume_select_ohtsiv2[y,m] = np.nanmean(array_volume)
 
@@ -445,10 +445,10 @@ ax[0].plot(np.arange(nyears),volume_select_tsia_15[:,2],'--',color='blue',label=
 ax[0].plot(np.arange(nyears),volume_select_tsiv_15[:,2],'--',color='green',label='Trend in sea-ice volume (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_aoht_8[:,2],'-',color='red',label='Atlantic OHT (8)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_apoht_8[:,2],'--',color='red',label='Atlantic/Pacific OHT (8)',linewidth=2)
-ax[0].plot(np.arange(nyears),volume_select_ohtsia1[:,2],'-',color='orange',label='Atlantic OHT and SIA (5)',linewidth=2)
+ax[0].plot(np.arange(nyears),volume_select_ohtsia1[:,2],'-',color='orange',label='Atlantic OHT and SIA (6)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_ohtsia2[:,2],'--',color='orange',label='Atl/Pac OHT and sea-ice area (5)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_ohtsiv1[:,2],'-',color='gray',label='Atlantic OHT and sea-ice volume (3)',linewidth=2)
-ax[0].plot(np.arange(nyears),volume_select_ohtsiv2[:,2],'--',color='gray',label='Atl/Pac OHT and sea-ice volume (6)',linewidth=2)
+ax[0].plot(np.arange(nyears),volume_select_ohtsiv2[:,2],'--',color='gray',label='Atl/Pac OHT and sea-ice volume (5)',linewidth=2)
 if experiment == 'ssp585':
     ax[0].plot(np.arange(nyears),volume_select_members[:,2],'-',color='purple',label='>= 5 members (10)',linewidth=2)
 elif experiment == 'ssp126':
