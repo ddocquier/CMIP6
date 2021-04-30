@@ -305,8 +305,8 @@ area_select_ohtsia2 = np.zeros((nyears,nmy))
 volume_select_ohtsia2 = np.zeros((nyears,nmy))
 for m in np.arange(nmy):
     for y in np.arange(nyears):
-        array_area = [area_mpiesmlr[y,m],area_hadgem3ll[y,m],area_hadgem3mm[y,m],area_ipslcm6alr[y,m],area_canesm5[y,m]]
-        array_volume = [volume_mpiesmlr[y,m],volume_hadgem3ll[y,m],volume_hadgem3mm[y,m],volume_ipslcm6alr[y,m],volume_canesm5[y,m]]
+        array_area = [area_mpiesmlr[y,m],area_hadgem3ll[y,m],area_hadgem3mm[y,m],area_ipslcm6alr[y,m]]
+        array_volume = [volume_mpiesmlr[y,m],volume_hadgem3ll[y,m],volume_hadgem3mm[y,m],volume_ipslcm6alr[y,m]]
         area_select_ohtsia2[y,m] = np.nanmean(array_area)
         volume_select_ohtsia2[y,m] = np.nanmean(array_volume)
 
@@ -376,8 +376,8 @@ ax[0].plot(np.arange(nyears),area_select_tsia_15[:,2],'--',color='blue',label='T
 ax[0].plot(np.arange(nyears),area_select_tsiv_15[:,2],'--',color='green',label='Trend in sea-ice volume (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_aoht_8[:,2],'-',color='red',label='Atlantic OHT (8)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_apoht_8[:,2],'--',color='red',label='Atlantic/Pacific OHT (8)',linewidth=2)
-ax[0].plot(np.arange(nyears),area_select_ohtsia1[:,2],'-',color='orange',label='Atlantic OHT + sea-ice area (5)',linewidth=2)
-ax[0].plot(np.arange(nyears),area_select_ohtsia2[:,2],'--',color='orange',label='Atl/Pac OHT + sea-ice area (5)',linewidth=2)
+ax[0].plot(np.arange(nyears),area_select_ohtsia1[:,2],'-',color='orange',label='Atlantic OHT + sea-ice area (6)',linewidth=2)
+ax[0].plot(np.arange(nyears),area_select_ohtsia2[:,2],'--',color='orange',label='Atl/Pac OHT + sea-ice area (4)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_ohtsiv1[:,2],'-',color='gray',label='Atlantic OHT + sea-ice volume (3)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_ohtsiv2[:,2],'--',color='gray',label='Atl/Pac OHT + sea-ice volume (6)',linewidth=2)
 if experiment == 'ssp585':
@@ -435,7 +435,7 @@ fig,ax = plt.subplots(2,1,figsize=(18,18))
 fig.subplots_adjust(left=0.08,bottom=0.2,right=0.95,top=0.95,wspace=None,hspace=0.3)
    
 # March volume
-ax[0].plot(np.arange(nyears),volume_mmm[:,2],'-',color='black',label='Without selection (28)',linewidth=3)
+ax[0].plot(np.arange(nyears),volume_mmm[:,2],'-',color='black',label='Without selection (28)',linewidth=4)
 ax[0].fill_between(np.arange(nyears),volume_mmm[:,2]-sd_volume_mmm[:,2],volume_mmm[:,2]+sd_volume_mmm[:,2],alpha=0.5,edgecolor='gray',facecolor='gray',linestyle='--')
 ax[0].plot(np.arange(nyears),volume_select_sia_15[:,2],'-',color='blue',label='Mean sea-ice area (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_siv_15[:,2],'-',color='green',label='Mean sea-ice volume (15)',linewidth=2)
@@ -446,7 +446,7 @@ ax[0].plot(np.arange(nyears),volume_select_tsiv_15[:,2],'--',color='green',label
 ax[0].plot(np.arange(nyears),volume_select_aoht_8[:,2],'-',color='red',label='Atlantic OHT (8)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_apoht_8[:,2],'--',color='red',label='Atlantic/Pacific OHT (8)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_ohtsia1[:,2],'-',color='orange',label='Atlantic OHT and SIA (6)',linewidth=2)
-ax[0].plot(np.arange(nyears),volume_select_ohtsia2[:,2],'--',color='orange',label='Atl/Pac OHT and sea-ice area (5)',linewidth=2)
+ax[0].plot(np.arange(nyears),volume_select_ohtsia2[:,2],'--',color='orange',label='Atl/Pac OHT and sea-ice area (4)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_ohtsiv1[:,2],'-',color='gray',label='Atlantic OHT and sea-ice volume (3)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_ohtsiv2[:,2],'--',color='gray',label='Atl/Pac OHT and sea-ice volume (5)',linewidth=2)
 if experiment == 'ssp585':
@@ -454,7 +454,7 @@ if experiment == 'ssp585':
 elif experiment == 'ssp126':
     ax[0].plot(np.arange(nyears),volume_select_members[:,2],'-',color='purple',label='>= 5 members (9)',linewidth=2)
 ax[0].legend(shadow=True,frameon=False,fontsize=20,bbox_to_anchor=(1.05,-1.5),ncol=3)
-ax[0].set_ylabel('March SIV (10$^3$ km$^3$)',fontsize=24)
+ax[0].set_ylabel('March sea-ice volume (10$^3$ km$^3$)',fontsize=24)
 ax[0].set_xticks(xrangea)
 ax[0].set_xticklabels(name_xticks)
 ax[0].set_yticks(np.arange(0, 30.1, 5))
@@ -464,7 +464,7 @@ ax[0].grid(linestyle='--')
 ax[0].set_title('a',loc='left',fontsize=25,fontweight='bold')
     
 # September volume
-ax[1].plot(np.arange(nyears),volume_mmm[:,8],'-',color='black',linewidth=3)
+ax[1].plot(np.arange(nyears),volume_mmm[:,8],'-',color='black',linewidth=4)
 ax[1].fill_between(np.arange(nyears),volume_mmm[:,8]-sd_volume_mmm[:,8],volume_mmm[:,8]+sd_volume_mmm[:,8],alpha=0.5,edgecolor='gray',facecolor='gray',linestyle='--')
 ax[1].plot(np.arange(nyears),volume_select_sia_15[:,8],'-',color='blue',linewidth=2)
 ax[1].plot(np.arange(nyears),volume_select_siv_15[:,8],'-',color='green',linewidth=2)
@@ -480,7 +480,7 @@ ax[1].plot(np.arange(nyears),volume_select_ohtsiv1[:,8],'-',color='gray',linewid
 ax[1].plot(np.arange(nyears),volume_select_ohtsiv2[:,8],'--',color='gray',linewidth=2)
 ax[1].plot(np.arange(nyears),volume_select_members[:,8],'-',color='purple',linewidth=2)
 ax[1].set_xlabel('Year',fontsize=24)
-ax[1].set_ylabel('September SIV (10$^3$ km$^3$)',fontsize=24)
+ax[1].set_ylabel('September sea-ice volume (10$^3$ km$^3$)',fontsize=24)
 ax[1].set_xticks(xrangea)
 ax[1].set_xticklabels(name_xticks)
 ax[1].set_yticks(np.arange(0, 12.1, 2))

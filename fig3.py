@@ -686,8 +686,8 @@ volume_select_ohtsia2_start = np.zeros(nmy)
 sd_area_select_ohtsia2_start = np.zeros(nmy)
 sd_volume_select_ohtsia2_start = np.zeros(nmy)
 for m in np.arange(nmy):
-    array_area = [area_mpiesmlr_start[m],area_hadgem3ll_start[m],area_hadgem3mm_start[m],area_ipslcm6alr_start[m],area_canesm5_start[m]]
-    array_volume = [volume_mpiesmlr_start[m],volume_hadgem3ll_start[m],volume_hadgem3mm_start[m],volume_ipslcm6alr_start[m],volume_canesm5_start[m]]
+    array_area = [area_mpiesmlr_start[m],area_hadgem3ll_start[m],area_hadgem3mm_start[m],area_ipslcm6alr_start[m]]
+    array_volume = [volume_mpiesmlr_start[m],volume_hadgem3ll_start[m],volume_hadgem3mm_start[m],volume_ipslcm6alr_start[m]]
     area_select_ohtsia2_start[m] = np.nanmean(array_area)
     volume_select_ohtsia2_start[m] = np.nanmean(array_volume)
     sd_area_select_ohtsia2_start[m] = np.nanstd(array_area)
@@ -701,8 +701,8 @@ sd_volume_select_ohtsia2_end = np.zeros(nmy)
 area_select_ohtsia2_change = np.zeros(nmy)
 volume_select_ohtsia2_change = np.zeros(nmy)
 for m in np.arange(nmy):
-    array_area = [area_mpiesmlr_end[m],area_hadgem3ll_end[m],area_hadgem3mm_end[m],area_ipslcm6alr_end[m],area_canesm5_end[m]]
-    array_volume = [volume_mpiesmlr_end[m],volume_hadgem3ll_end[m],volume_hadgem3mm_end[m],volume_ipslcm6alr_end[m],volume_canesm5_end[m]]
+    array_area = [area_mpiesmlr_end[m],area_hadgem3ll_end[m],area_hadgem3mm_end[m],area_ipslcm6alr_end[m]]
+    array_volume = [volume_mpiesmlr_end[m],volume_hadgem3ll_end[m],volume_hadgem3mm_end[m],volume_ipslcm6alr_end[m]]
     area_select_ohtsia2_end[m] = np.nanmean(array_area)
     volume_select_ohtsia2_end[m] = np.nanmean(array_volume)
     sd_area_select_ohtsia2_end[m] = np.nanstd(array_area)
@@ -963,7 +963,7 @@ else:
     ax[1,0].annotate(str(int(np.round(volume_select_aoht_8_change[month])))+'%',(volume_select_aoht_8_start[month]+0.15,volume_select_aoht_8_end[month]-0.3),color='red',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_apoht_8_change[month])))+'%',(volume_select_apoht_8_start[month]+0.15,volume_select_apoht_8_end[month]+0.1),color='red',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_ohtsia1_change[month])))+'%',(volume_select_ohtsia1_start[month]-0.1,volume_select_ohtsia1_end[month]-0.5),color='orange',fontsize=14)
-    ax[1,0].annotate(str(int(np.round(volume_select_ohtsia2_change[month])))+'%',(volume_select_ohtsia2_start[month]-1.,volume_select_ohtsia2_end[month]),color='orange',fontsize=14)
+    ax[1,0].annotate(str(int(np.round(volume_select_ohtsia2_change[month])))+'%',(volume_select_ohtsia2_start[month]-1.,volume_select_ohtsia2_end[month]-0.2),color='orange',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv1_change[month])))+'%',(volume_select_ohtsiv1_start[month]-0.5,volume_select_ohtsiv1_end[month]+0.2),color='gray',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]-0.3,volume_select_ohtsiv2_end[month]-0.5),color='gray',fontsize=14)
     ax[1,0].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]+0.1,volume_select_members_end[month]-0.5),color='purple',fontsize=14)
@@ -992,7 +992,7 @@ ax[1,1].plot(volume_select_tsiv_15_start[month],volume_select_tsiv_15_end[month]
 ax[1,1].plot(volume_select_aoht_8_start[month],volume_select_aoht_8_end[month],'o',color='red',label='Atlantic OHT (8)',markersize=14)
 ax[1,1].plot(volume_select_apoht_8_start[month],volume_select_apoht_8_end[month],'X',color='red',label='Atlantic/Pacific OHT (8)',markersize=14)
 ax[1,1].plot(volume_select_ohtsia1_start[month],volume_select_ohtsia1_end[month],'o',color='orange',label='Atlantic OHT + sea-ice area (6)',markersize=14)
-ax[1,1].plot(volume_select_ohtsia2_start[month],volume_select_ohtsia2_end[month],'X',color='orange',label='Atl/Pac OHT + sea-ice area (5)',markersize=14)
+ax[1,1].plot(volume_select_ohtsia2_start[month],volume_select_ohtsia2_end[month],'X',color='orange',label='Atl/Pac OHT + sea-ice area (4)',markersize=14)
 ax[1,1].plot(volume_select_ohtsiv1_start[month],volume_select_ohtsiv1_end[month],'o',color='gray',label='Atlantic OHT + sea-ice volume (3)',markersize=14)
 ax[1,1].plot(volume_select_ohtsiv2_start[month],volume_select_ohtsiv2_end[month],'X',color='gray',label='Atl/Pac OHT + sea-ice volume (5)',markersize=14)
 ax[1,1].plot(volume_select_members_start[month],volume_select_members_end[month],'o',color='purple',label='>= 5 members (10)',markersize=14)

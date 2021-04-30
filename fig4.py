@@ -315,7 +315,7 @@ sd_ohtsia1_date = np.nanstd(array_ohtsia1)
 print('AOHT/SIA:',array_ohtsia1)
 
 # Good AOHT 70N + POHT 60N and SIA (among the best 15 SIA models and best 8 OHT models)
-array_ohtsia2 = [area_mpiesmlr_date,area_hadgem3ll_date,area_hadgem3mm_date,area_ipslcm6alr_date,area_canesm5_date]
+array_ohtsia2 = [area_mpiesmlr_date,area_hadgem3ll_date,area_hadgem3mm_date,area_ipslcm6alr_date]
 #ohtsia2_date = np.nanmean(array_ohtsia2)
 sd_ohtsia2_date = np.nanstd(array_ohtsia2)
 print('APOHT/SIA:',array_ohtsia2)
@@ -383,7 +383,7 @@ ax.plot(index[6],tsiv_date,'P',color='green',label='C6: Trend in sea-ice volume 
 ax.plot(index[7],aoht_date,'o',color='red',label='C7: Atlantic OHT (8)',markersize=14)
 ax.plot(index[8],apoht_date,'X',color='red',label='C8: Atlantic/Pacific OHT (8)',markersize=14)
 ax.plot(index[9],ohtsia1_date,'o',color='orange',label='C9: Atlantic OHT + sea-ice area (6)',markersize=14)
-ax.plot(index[10],ohtsia2_date,'X',color='orange',label='C10: Atl/Pac OHT + sea-ice area (5)',markersize=14)
+ax.plot(index[10],ohtsia2_date,'X',color='orange',label='C10: Atl/Pac OHT + sea-ice area (4)',markersize=14)
 ax.plot(index[11],ohtsiv1_date,'o',color='gray',label='C11: Atlantic OHT + sea-ice volume (3)',markersize=14)
 ax.plot(index[12],ohtsiv2_date,'X',color='gray',label='C12: Atl/Pac OHT + sea-ice volume (5)',markersize=14)
 if experiment == 'ssp585':
