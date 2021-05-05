@@ -10,7 +10,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    30/04/2021
+    05/05/2021
 '''
 
 # Standard libraries
@@ -379,7 +379,7 @@ ax[0].plot(np.arange(nyears),area_select_apoht_8[:,2],'--',color='red',label='At
 ax[0].plot(np.arange(nyears),area_select_ohtsia1[:,2],'-',color='orange',label='Atlantic OHT + sea-ice area (6)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_ohtsia2[:,2],'--',color='orange',label='Atl/Pac OHT + sea-ice area (4)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_ohtsiv1[:,2],'-',color='gray',label='Atlantic OHT + sea-ice volume (3)',linewidth=2)
-ax[0].plot(np.arange(nyears),area_select_ohtsiv2[:,2],'--',color='gray',label='Atl/Pac OHT + sea-ice volume (6)',linewidth=2)
+ax[0].plot(np.arange(nyears),area_select_ohtsiv2[:,2],'--',color='gray',label='Atl/Pac OHT + sea-ice volume (5)',linewidth=2)
 if experiment == 'ssp585':
     ax[0].plot(np.arange(nyears),area_select_members[:,2],'-',color='purple',label='>= 5 members (10)',linewidth=2)
 elif experiment == 'ssp126':
