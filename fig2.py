@@ -10,7 +10,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    05/05/2021
+    08/06/2021
 '''
 
 # Standard libraries
@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 # Option
 experiment = 'ssp585' # ssp126; ssp585
 save_fig = True
-save_var = True
+save_var = False
 
 # Working directories
 dir_input = '/nobackup/rossby24/proj/rossby/joint_exp/oseaice/CMIP6/' + str(experiment) + '/SIA-SIV/'
@@ -367,7 +367,7 @@ if experiment == 'ssp126':
     ax[0].plot(np.arange(nyears),area_mmm[:,2],'-',color='black',label='Without selection (32)',linewidth=4)
 elif experiment == 'ssp585':
     ax[0].plot(np.arange(nyears),area_mmm[:,2],'-',color='black',label='Without selection (33)',linewidth=4)
-ax[0].fill_between(np.arange(nyears),area_mmm[:,2]-sd_area_mmm[:,2],area_mmm[:,2]+sd_area_mmm[:,2],alpha=0.5,edgecolor='gray',facecolor='gray',linestyle='--')
+ax[0].fill_between(np.arange(nyears),area_mmm[:,2]-sd_area_mmm[:,2],area_mmm[:,2]+sd_area_mmm[:,2],alpha=0.5,edgecolor='lightgray',facecolor='lightgray',linestyle='--')
 ax[0].plot(np.arange(nyears),area_select_sia_15[:,2],'-',color='blue',label='Mean sea-ice area (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_siv_15[:,2],'-',color='green',label='Mean sea-ice volume (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),area_select_varsia_15[:,2],'-.',color='blue',label='Sea-ice area variability (15)',linewidth=2)
@@ -397,7 +397,7 @@ ax[0].set_title('a',loc='left',fontsize=25,fontweight='bold')
     
 # September area
 ax[1].plot(np.arange(nyears),area_mmm[:,8],'-',color='black',linewidth=4)
-ax[1].fill_between(np.arange(nyears),area_mmm[:,8]-sd_area_mmm[:,8],area_mmm[:,8]+sd_area_mmm[:,8],alpha=0.5,edgecolor='gray',facecolor='gray',linestyle='--')
+ax[1].fill_between(np.arange(nyears),area_mmm[:,8]-sd_area_mmm[:,8],area_mmm[:,8]+sd_area_mmm[:,8],alpha=0.5,edgecolor='lightgray',facecolor='lightgray',linestyle='--')
 ax[1].plot(np.arange(nyears),area_select_sia_15[:,8],'-',color='blue',linewidth=2)
 ax[1].plot(np.arange(nyears),area_select_siv_15[:,8],'-',color='green',linewidth=2)
 ax[1].plot(np.arange(nyears),area_select_varsia_15[:,8],'-.',color='blue',linewidth=2)
@@ -424,7 +424,7 @@ ax[1].set_title('b',loc='left',fontsize=25,fontweight='bold')
     
 if save_fig == True:
     if experiment == 'ssp585':
-        fig.savefig(dir_output + 'fig2.png')
+        fig.savefig(dir_output + 'fig2.png',dpi=300)
     else:
         fig.savefig(dir_output + 'figS4.png')
     
@@ -436,7 +436,7 @@ fig.subplots_adjust(left=0.08,bottom=0.2,right=0.95,top=0.95,wspace=None,hspace=
    
 # March volume
 ax[0].plot(np.arange(nyears),volume_mmm[:,2],'-',color='black',label='Without selection (28)',linewidth=4)
-ax[0].fill_between(np.arange(nyears),volume_mmm[:,2]-sd_volume_mmm[:,2],volume_mmm[:,2]+sd_volume_mmm[:,2],alpha=0.5,edgecolor='gray',facecolor='gray',linestyle='--')
+ax[0].fill_between(np.arange(nyears),volume_mmm[:,2]-sd_volume_mmm[:,2],volume_mmm[:,2]+sd_volume_mmm[:,2],alpha=0.5,edgecolor='lightgray',facecolor='lightgray',linestyle='--')
 ax[0].plot(np.arange(nyears),volume_select_sia_15[:,2],'-',color='blue',label='Mean sea-ice area (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_siv_15[:,2],'-',color='green',label='Mean sea-ice volume (15)',linewidth=2)
 ax[0].plot(np.arange(nyears),volume_select_varsia_15[:,2],'-.',color='blue',label='Sea-ice area variability (15)',linewidth=2)
@@ -465,7 +465,7 @@ ax[0].set_title('a',loc='left',fontsize=25,fontweight='bold')
     
 # September volume
 ax[1].plot(np.arange(nyears),volume_mmm[:,8],'-',color='black',linewidth=4)
-ax[1].fill_between(np.arange(nyears),volume_mmm[:,8]-sd_volume_mmm[:,8],volume_mmm[:,8]+sd_volume_mmm[:,8],alpha=0.5,edgecolor='gray',facecolor='gray',linestyle='--')
+ax[1].fill_between(np.arange(nyears),volume_mmm[:,8]-sd_volume_mmm[:,8],volume_mmm[:,8]+sd_volume_mmm[:,8],alpha=0.5,edgecolor='lightgray',facecolor='lightgray',linestyle='--')
 ax[1].plot(np.arange(nyears),volume_select_sia_15[:,8],'-',color='blue',linewidth=2)
 ax[1].plot(np.arange(nyears),volume_select_siv_15[:,8],'-',color='green',linewidth=2)
 ax[1].plot(np.arange(nyears),volume_select_varsia_15[:,8],'-.',color='blue',linewidth=2)

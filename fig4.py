@@ -8,7 +8,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    30/04/2021
+    08/06/2021
 '''
 
 # Standard libraries
@@ -445,6 +445,6 @@ ax.grid(linestyle='--')
 # Save figure
 if save_fig == True:
     if experiment == 'ssp585':
-        fig.savefig(dir_output + 'fig4.png')
+        fig.savefig(dir_output + 'fig4.png',dpi=300)
     else:
         fig.savefig(dir_output + 'figS6.png')

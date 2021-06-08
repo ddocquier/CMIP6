@@ -8,7 +8,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    15/04/2021
+    08/06/2021
 '''
 
 # Standard libraries
@@ -227,6 +227,6 @@ ax[1].set_title('b',loc='left',fontsize=25,fontweight='bold')
     
 if save_fig == True:
     if experiment == 'ssp585':
-        fig.savefig(dir_output + 'fig1.png')
+        fig.savefig(dir_output + 'fig1.png',dpi=300)
     else:
         fig.savefig(dir_output + 'figS2.png')

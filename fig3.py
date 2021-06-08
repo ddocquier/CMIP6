@@ -8,7 +8,7 @@ GOAL
 PROGRAMMER
     D. Docquier
 LAST UPDATEs
-    30/04/2021
+    08/06/2021
 '''
 
 # Standard libraries
@@ -917,6 +917,7 @@ ax[0,1].set_ylabel('September sea-ice area \n 2096-2100 (10$^6$ km$^2$)',fontsiz
 #ax[0,1].set_ylabel('September sea-ice area \n 2091-2100 (10$^6$ km$^2$)',fontsize=18)
 ax[0,1].tick_params(axis='both',labelsize=16)
 ax[0,1].grid(linestyle='--')
+ax[0,1].axis([2.25, 5.75, -0.05, 1.3])
 ax[0,1].set_title('b',loc='left',fontsize=25,fontweight='bold')
 
 # Change in March sea-ice volume (2096-2100 vs 2015-2019)
@@ -1019,18 +1020,19 @@ else:
     ax[1,1].annotate(str(int(np.round(volume_select_ohtsiv2_change[month])))+'%',(volume_select_ohtsiv2_start[month]-0.5,volume_select_ohtsiv2_end[month]-0.4),color='gray',fontsize=14)
     ax[1,1].annotate(str(int(np.round(volume_select_members_change[month])))+'%',(volume_select_members_start[month]+0.15,volume_select_members_end[month]+0.15),color='purple',fontsize=14)
 ax[1,1].axvline(x=volume_piomas_start[month],color='black',label='Obs./Reanalysis',linestyle='--',linewidth=2)
-ax[1,1].legend(shadow=True,frameon=False,fontsize=16,bbox_to_anchor=(1.05,-0.18),ncol=3)
+ax[1,1].legend(shadow=True,frameon=False,fontsize=16,loc='center',bbox_to_anchor=(-0.25,-0.4),ncol=3)
 ax[1,1].set_xlabel('September sea-ice volume 2015-2019 (10$^3$ km$^3$)',fontsize=18)
 ax[1,1].set_ylabel('September sea-ice volume \n 2096-2100 (10$^3$ km$^3$)',fontsize=18)
 #ax[1,1].set_xlabel('September sea-ice volume 2015-2024 (10$^3$ km$^3$)',fontsize=18)
 #ax[1,1].set_ylabel('September sea-ice volume \n 2091-2100 (10$^3$ km$^3$)',fontsize=18)
 ax[1,1].tick_params(axis='both',labelsize=16)
 ax[1,1].grid(linestyle='--')
+ax[1,1].axis([2.2, 11, -0.02, 0.55])
 ax[1,1].set_title('d',loc='left',fontsize=25,fontweight='bold')
 
 # Save figure
 if save_fig == True:
     if experiment == 'ssp585':
-        fig.savefig(dir_output + 'fig3.png')
+        fig.savefig(dir_output + 'fig3.png',dpi=300)
     else:
         fig.savefig(dir_output + 'figS5.png')
